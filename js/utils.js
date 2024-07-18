@@ -1,1 +1,307 @@
-function _slicedToArray(t,e){return _arrayWithHoles(t)||_iterableToArrayLimit(t,e)||_unsupportedIterableToArray(t,e)||_nonIterableRest()}function _nonIterableRest(){throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _iterableToArrayLimit(t,e){var n=null==t?null:"undefined"!=typeof Symbol&&t[Symbol.iterator]||t["@@iterator"];if(null!=n){var r,o,a,i,l=[],u=!0,c=!1;try{if(a=(n=n.call(t)).next,0===e){if(Object(n)!==n)return;u=!1}else for(;!(u=(r=a.call(n)).done)&&(l.push(r.value),l.length!==e);u=!0);}catch(t){c=!0,o=t}finally{try{if(!u&&null!=n.return&&(i=n.return(),Object(i)!==i))return}finally{if(c)throw o}}return l}}function _arrayWithHoles(t){if(Array.isArray(t))return t}function _toConsumableArray(t){return _arrayWithoutHoles(t)||_iterableToArray(t)||_unsupportedIterableToArray(t)||_nonIterableSpread()}function _nonIterableSpread(){throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.")}function _unsupportedIterableToArray(t,e){if(t){if("string"==typeof t)return _arrayLikeToArray(t,e);var n={}.toString.call(t).slice(8,-1);return"Object"===n&&t.constructor&&(n=t.constructor.name),"Map"===n||"Set"===n?Array.from(t):"Arguments"===n||/^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)?_arrayLikeToArray(t,e):void 0}}function _iterableToArray(t){if("undefined"!=typeof Symbol&&null!=t[Symbol.iterator]||null!=t["@@iterator"])return Array.from(t)}function _arrayWithoutHoles(t){if(Array.isArray(t))return _arrayLikeToArray(t)}function _arrayLikeToArray(t,e){(null==e||e>t.length)&&(e=t.length);for(var n=0,r=Array(e);n<e;n++)r[n]=t[n];return r}var btf={debounce:function(t,e,n){var r;return function(){var o=this,a=arguments,i=n&&!r;clearTimeout(r),r=setTimeout((function(){r=null,n||t.apply(o,a)}),e),i&&t.apply(o,a)}},throttle:function(t,e,n){var r,o,a,i=0;n||(n={});var l=function(){i=!1===n.leading?0:(new Date).getTime(),r=null,t.apply(o,a),r||(o=a=null)};return function(){var u=(new Date).getTime();i||!1!==n.leading||(i=u);var c=e-(u-i);o=this,a=arguments,c<=0||c>e?(r&&(clearTimeout(r),r=null),i=u,t.apply(o,a),r||(o=a=null)):r||!1===n.trailing||(r=setTimeout(l,c))}},sidebarPaddingR:function(){var t=window.innerWidth,e=document.body.clientWidth,n=t-e;t!==e&&(document.body.style.paddingRight=n+"px")},snackbarShow:function(t){var e=arguments.length>1&&void 0!==arguments[1]&&arguments[1],n=arguments.length>2&&void 0!==arguments[2]?arguments[2]:2e3,r=GLOBAL_CONFIG.Snackbar,o=r.position,a=r.bgLight,i=r.bgDark,l="light"===document.documentElement.getAttribute("data-theme")?a:i;Snackbar.show({text:t,backgroundColor:l,showAction:e,duration:n,pos:o,customClass:"snackbar-css"})},diffDate:function(t){var e,n=arguments.length>1&&void 0!==arguments[1]&&arguments[1],r=new Date,o=new Date(t),a=r.getTime()-o.getTime(),i=36e5,l=24*i;if(n){var u=a/(30*l),c=a/l,s=a/i,f=a/6e4;e=u>12?o.toISOString().slice(0,10):u>=1?parseInt(u)+" "+GLOBAL_CONFIG.date_suffix.month:c>=1?parseInt(c)+" "+GLOBAL_CONFIG.date_suffix.day:s>=1?parseInt(s)+" "+GLOBAL_CONFIG.date_suffix.hour:f>=1?parseInt(f)+" "+GLOBAL_CONFIG.date_suffix.min:GLOBAL_CONFIG.date_suffix.just}else e=parseInt(a/l);return e},loadComment:function(t,e){if("IntersectionObserver"in window){var n=new IntersectionObserver((function(t){t[0].isIntersecting&&(e(),n.disconnect())}),{threshold:[0]});n.observe(t)}else e()},scrollToDest:function(t){var e=arguments.length>1&&void 0!==arguments[1]?arguments[1]:500,n=window.pageYOffset,r=document.getElementById("page-header").classList.contains("fixed");if((n>t||r)&&(t-=70),"scrollBehavior"in document.documentElement.style)window.scrollTo({top:t,behavior:"smooth"});else{var o=null;t=+t,window.requestAnimationFrame((function r(a){var i=a-(o=o||a);n<t?window.scrollTo(0,(t-n)*i/e+n):window.scrollTo(0,n-(n-t)*i/e),i<e?window.requestAnimationFrame(r):window.scrollTo(0,t)}))}},animateIn:function(t,e){t.style.display="block",t.style.animation=e},animateOut:function(t,e){t.addEventListener("animationend",(function e(){t.style.display="",t.style.animation="",t.removeEventListener("animationend",e)})),t.style.animation=e},getParents:function(t,e){for(;t&&t!==document;t=t.parentNode)if(t.matches(e))return t;return null},siblings:function(t,e){return _toConsumableArray(t.parentNode.children).filter((function(n){return e?n!==t&&n.matches(e):n!==t}))},wrap:function(t,e,n){for(var r=document.createElement(e),o=0,a=Object.entries(n);o<a.length;o++){var i=_slicedToArray(a[o],2),l=i[0],u=i[1];r.setAttribute(l,u)}t.parentNode.insertBefore(r,t),r.appendChild(t)},unwrap:function(t){var e=t.parentNode;e!==document.body&&(e.parentNode.insertBefore(t,e),e.parentNode.removeChild(e))},isHidden:function(t){return 0===t.offsetHeight&&0===t.offsetWidth},getEleTop:function(t){for(var e=t.offsetTop,n=t.offsetParent;null!==n;)e+=n.offsetTop,n=n.offsetParent;return e},loadLightbox:function(t){var e=GLOBAL_CONFIG.lightbox;if("mediumZoom"===e){var n=mediumZoom(t);n.on("open",(function(t){var e="dark"===document.documentElement.getAttribute("data-theme")?"#121212":"#fff";n.update({background:e})}))}"fancybox"===e&&(t.forEach((function(t){if("A"!==t.parentNode.tagName){var e=t.dataset.lazySrc||t.src,n=t.title||t.alt||"";btf.wrap(t,"a",{href:e,"data-fancybox":"gallery","data-caption":n,"data-thumb":e})}})),window.fancyboxRun||(Fancybox.bind("[data-fancybox]",{Hash:!1,Thumbs:{showOnStart:!1},Images:{Panzoom:{maxScale:4}},Carousel:{transition:"slide"},Toolbar:{display:{left:["infobar"],middle:["zoomIn","zoomOut","toggle1to1","rotateCCW","rotateCW","flipX","flipY"],right:["slideshow","thumbs","close"]}}}),window.fancyboxRun=!0))},initJustifiedGallery:function(t){var e=function(t){btf.isHidden(t)||fjGallery(t,{itemSelector:".fj-gallery-item",rowHeight:t.getAttribute("data-rowHeight"),gutter:4,onJustify:function(){this.$container.style.opacity="1"}})};0===Array.from(t).length?e(t):t.forEach((function(t){e(t)}))},updateAnchor:function(t){if(t!==window.location.hash){t||(t=location.pathname);var e=GLOBAL_CONFIG_SITE.title;window.history.replaceState({url:location.href,title:e},e,t)}},getScrollPercent:function(t,e){var n=e.clientHeight,r=document.documentElement.clientHeight,o=(t-e.offsetTop)/(n>r?n-r:document.documentElement.scrollHeight-r),a=Math.round(100*o);return a>100?100:a<=0?0:a}};
+function _slicedToArray(r, e) { return _arrayWithHoles(r) || _iterableToArrayLimit(r, e) || _unsupportedIterableToArray(r, e) || _nonIterableRest(); }
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _iterableToArrayLimit(r, l) { var t = null == r ? null : "undefined" != typeof Symbol && r[Symbol.iterator] || r["@@iterator"]; if (null != t) { var e, n, i, u, a = [], f = !0, o = !1; try { if (i = (t = t.call(r)).next, 0 === l) { if (Object(t) !== t) return; f = !1; } else for (; !(f = (e = i.call(t)).done) && (a.push(e.value), a.length !== l); f = !0); } catch (r) { o = !0, n = r; } finally { try { if (!f && null != t["return"] && (u = t["return"](), Object(u) !== u)) return; } finally { if (o) throw n; } } return a; } }
+function _arrayWithHoles(r) { if (Array.isArray(r)) return r; }
+function _toConsumableArray(r) { return _arrayWithoutHoles(r) || _iterableToArray(r) || _unsupportedIterableToArray(r) || _nonIterableSpread(); }
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+function _unsupportedIterableToArray(r, a) { if (r) { if ("string" == typeof r) return _arrayLikeToArray(r, a); var t = {}.toString.call(r).slice(8, -1); return "Object" === t && r.constructor && (t = r.constructor.name), "Map" === t || "Set" === t ? Array.from(r) : "Arguments" === t || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(t) ? _arrayLikeToArray(r, a) : void 0; } }
+function _iterableToArray(r) { if ("undefined" != typeof Symbol && null != r[Symbol.iterator] || null != r["@@iterator"]) return Array.from(r); }
+function _arrayWithoutHoles(r) { if (Array.isArray(r)) return _arrayLikeToArray(r); }
+function _arrayLikeToArray(r, a) { (null == a || a > r.length) && (a = r.length); for (var e = 0, n = Array(a); e < a; e++) n[e] = r[e]; return n; }
+var btf = {
+  debounce: function debounce(func, wait, immediate) {
+    var timeout;
+    return function () {
+      var context = this;
+      var args = arguments;
+      var later = function later() {
+        timeout = null;
+        if (!immediate) func.apply(context, args);
+      };
+      var callNow = immediate && !timeout;
+      clearTimeout(timeout);
+      timeout = setTimeout(later, wait);
+      if (callNow) func.apply(context, args);
+    };
+  },
+  throttle: function throttle(func, wait, options) {
+    var timeout, context, args;
+    var previous = 0;
+    if (!options) options = {};
+    var later = function later() {
+      previous = options.leading === false ? 0 : new Date().getTime();
+      timeout = null;
+      func.apply(context, args);
+      if (!timeout) context = args = null;
+    };
+    var throttled = function throttled() {
+      var now = new Date().getTime();
+      if (!previous && options.leading === false) previous = now;
+      var remaining = wait - (now - previous);
+      context = this;
+      args = arguments;
+      if (remaining <= 0 || remaining > wait) {
+        if (timeout) {
+          clearTimeout(timeout);
+          timeout = null;
+        }
+        previous = now;
+        func.apply(context, args);
+        if (!timeout) context = args = null;
+      } else if (!timeout && options.trailing !== false) {
+        timeout = setTimeout(later, remaining);
+      }
+    };
+    return throttled;
+  },
+  sidebarPaddingR: function sidebarPaddingR() {
+    var innerWidth = window.innerWidth;
+    var clientWidth = document.body.clientWidth;
+    var paddingRight = innerWidth - clientWidth;
+    if (innerWidth !== clientWidth) {
+      document.body.style.paddingRight = paddingRight + 'px';
+    }
+  },
+  snackbarShow: function snackbarShow(text) {
+    var showAction = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var duration = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 2000;
+    var _GLOBAL_CONFIG$Snackb = GLOBAL_CONFIG.Snackbar,
+      position = _GLOBAL_CONFIG$Snackb.position,
+      bgLight = _GLOBAL_CONFIG$Snackb.bgLight,
+      bgDark = _GLOBAL_CONFIG$Snackb.bgDark;
+    var bg = document.documentElement.getAttribute('data-theme') === 'light' ? bgLight : bgDark;
+    Snackbar.show({
+      text: text,
+      backgroundColor: bg,
+      showAction: showAction,
+      duration: duration,
+      pos: position,
+      customClass: 'snackbar-css'
+    });
+  },
+  diffDate: function diffDate(d) {
+    var more = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : false;
+    var dateNow = new Date();
+    var datePost = new Date(d);
+    var dateDiff = dateNow.getTime() - datePost.getTime();
+    var minute = 1000 * 60;
+    var hour = minute * 60;
+    var day = hour * 24;
+    var month = day * 30;
+    var result;
+    if (more) {
+      var monthCount = dateDiff / month;
+      var dayCount = dateDiff / day;
+      var hourCount = dateDiff / hour;
+      var minuteCount = dateDiff / minute;
+      if (monthCount > 12) {
+        result = datePost.toISOString().slice(0, 10);
+      } else if (monthCount >= 1) {
+        result = parseInt(monthCount) + ' ' + GLOBAL_CONFIG.date_suffix.month;
+      } else if (dayCount >= 1) {
+        result = parseInt(dayCount) + ' ' + GLOBAL_CONFIG.date_suffix.day;
+      } else if (hourCount >= 1) {
+        result = parseInt(hourCount) + ' ' + GLOBAL_CONFIG.date_suffix.hour;
+      } else if (minuteCount >= 1) {
+        result = parseInt(minuteCount) + ' ' + GLOBAL_CONFIG.date_suffix.min;
+      } else {
+        result = GLOBAL_CONFIG.date_suffix.just;
+      }
+    } else {
+      result = parseInt(dateDiff / day);
+    }
+    return result;
+  },
+  loadComment: function loadComment(dom, callback) {
+    if ('IntersectionObserver' in window) {
+      var observerItem = new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) {
+          callback();
+          observerItem.disconnect();
+        }
+      }, {
+        threshold: [0]
+      });
+      observerItem.observe(dom);
+    } else {
+      callback();
+    }
+  },
+  scrollToDest: function scrollToDest(pos) {
+    var time = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : 500;
+    var currentPos = window.pageYOffset;
+    var isNavFixed = document.getElementById('page-header').classList.contains('fixed');
+    if (currentPos > pos || isNavFixed) pos = pos - 70;
+    if ('scrollBehavior' in document.documentElement.style) {
+      window.scrollTo({
+        top: pos,
+        behavior: 'smooth'
+      });
+      return;
+    }
+    var start = null;
+    pos = +pos;
+    window.requestAnimationFrame(function step(currentTime) {
+      start = !start ? currentTime : start;
+      var progress = currentTime - start;
+      if (currentPos < pos) {
+        window.scrollTo(0, (pos - currentPos) * progress / time + currentPos);
+      } else {
+        window.scrollTo(0, currentPos - (currentPos - pos) * progress / time);
+      }
+      if (progress < time) {
+        window.requestAnimationFrame(step);
+      } else {
+        window.scrollTo(0, pos);
+      }
+    });
+  },
+  animateIn: function animateIn(ele, text) {
+    ele.style.display = 'block';
+    ele.style.animation = text;
+  },
+  animateOut: function animateOut(ele, text) {
+    ele.addEventListener('animationend', function f() {
+      ele.style.display = '';
+      ele.style.animation = '';
+      ele.removeEventListener('animationend', f);
+    });
+    ele.style.animation = text;
+  },
+  getParents: function getParents(elem, selector) {
+    for (; elem && elem !== document; elem = elem.parentNode) {
+      if (elem.matches(selector)) return elem;
+    }
+    return null;
+  },
+  siblings: function siblings(ele, selector) {
+    return _toConsumableArray(ele.parentNode.children).filter(function (child) {
+      if (selector) {
+        return child !== ele && child.matches(selector);
+      }
+      return child !== ele;
+    });
+  },
+  /**
+   * @param {*} selector
+   * @param {*} eleType the type of create element
+   * @param {*} options object key: value
+   */
+  wrap: function wrap(selector, eleType, options) {
+    var createEle = document.createElement(eleType);
+    for (var _i = 0, _Object$entries = Object.entries(options); _i < _Object$entries.length; _i++) {
+      var _Object$entries$_i = _slicedToArray(_Object$entries[_i], 2),
+        key = _Object$entries$_i[0],
+        value = _Object$entries$_i[1];
+      createEle.setAttribute(key, value);
+    }
+    selector.parentNode.insertBefore(createEle, selector);
+    createEle.appendChild(selector);
+  },
+  unwrap: function unwrap(el) {
+    var elParentNode = el.parentNode;
+    if (elParentNode !== document.body) {
+      elParentNode.parentNode.insertBefore(el, elParentNode);
+      elParentNode.parentNode.removeChild(elParentNode);
+    }
+  },
+  isHidden: function isHidden(ele) {
+    return ele.offsetHeight === 0 && ele.offsetWidth === 0;
+  },
+  getEleTop: function getEleTop(ele) {
+    var actualTop = ele.offsetTop;
+    var current = ele.offsetParent;
+    while (current !== null) {
+      actualTop += current.offsetTop;
+      current = current.offsetParent;
+    }
+    return actualTop;
+  },
+  loadLightbox: function loadLightbox(ele) {
+    var service = GLOBAL_CONFIG.lightbox;
+    if (service === 'mediumZoom') {
+      var zoom = mediumZoom(ele);
+      zoom.on('open', function (e) {
+        var photoBg = document.documentElement.getAttribute('data-theme') === 'dark' ? '#121212' : '#fff';
+        zoom.update({
+          background: photoBg
+        });
+      });
+    }
+    if (service === 'fancybox') {
+      ele.forEach(function (i) {
+        if (i.parentNode.tagName !== 'A') {
+          var dataSrc = i.dataset.lazySrc || i.src;
+          var dataCaption = i.title || i.alt || '';
+          btf.wrap(i, 'a', {
+            href: dataSrc,
+            'data-fancybox': 'gallery',
+            'data-caption': dataCaption,
+            'data-thumb': dataSrc
+          });
+        }
+      });
+      if (!window.fancyboxRun) {
+        Fancybox.bind('[data-fancybox]', {
+          Hash: false,
+          Thumbs: {
+            showOnStart: false
+          },
+          Images: {
+            Panzoom: {
+              maxScale: 4
+            }
+          },
+          Carousel: {
+            transition: 'slide'
+          },
+          Toolbar: {
+            display: {
+              left: ['infobar'],
+              middle: ['zoomIn', 'zoomOut', 'toggle1to1', 'rotateCCW', 'rotateCW', 'flipX', 'flipY'],
+              right: ['slideshow', 'thumbs', 'close']
+            }
+          }
+        });
+        window.fancyboxRun = true;
+      }
+    }
+  },
+  initJustifiedGallery: function initJustifiedGallery(selector) {
+    var runJustifiedGallery = function runJustifiedGallery(i) {
+      if (!btf.isHidden(i)) {
+        fjGallery(i, {
+          itemSelector: '.fj-gallery-item',
+          rowHeight: i.getAttribute('data-rowHeight'),
+          gutter: 4,
+          onJustify: function onJustify() {
+            this.$container.style.opacity = '1';
+          }
+        });
+      }
+    };
+    if (Array.from(selector).length === 0) runJustifiedGallery(selector);else selector.forEach(function (i) {
+      runJustifiedGallery(i);
+    });
+  },
+  updateAnchor: function updateAnchor(anchor) {
+    if (anchor !== window.location.hash) {
+      if (!anchor) anchor = location.pathname;
+      var title = GLOBAL_CONFIG_SITE.title;
+      window.history.replaceState({
+        url: location.href,
+        title: title
+      }, title, anchor);
+    }
+  },
+  getScrollPercent: function getScrollPercent(currentTop, ele) {
+    var docHeight = ele.clientHeight;
+    var winHeight = document.documentElement.clientHeight;
+    var headerHeight = ele.offsetTop;
+    var contentMath = docHeight > winHeight ? docHeight - winHeight : document.documentElement.scrollHeight - winHeight;
+    var scrollPercent = (currentTop - headerHeight) / contentMath;
+    var scrollPercentRounded = Math.round(scrollPercent * 100);
+    var percentage = scrollPercentRounded > 100 ? 100 : scrollPercentRounded <= 0 ? 0 : scrollPercentRounded;
+    return percentage;
+  }
+};
