@@ -15,8 +15,23 @@
     <atom:link href="https://blog.kazes.top/feed/rss2.xml" rel="self" type="application/rss+xml"/>
     
     <description>kaze-log，kaze的博客，记录X_X稀奇古怪的网络日志（weblog? blog? klog!），或许是一个🎁宝藏网站( •̀ ω •́ )。</description>
-    <pubDate>Sun, 04 Aug 2024 15:15:44 GMT</pubDate>
+    <pubDate>Mon, 05 Aug 2024 06:27:55 GMT</pubDate>
     <generator>http://hexo.io/</generator>
+    
+    <item>
+      <title></title>
+      <link>https://blog.kazes.top/posts/0/</link>
+      <guid>https://blog.kazes.top/posts/0/</guid>
+      <pubDate>Mon, 05 Aug 2024 06:27:55 GMT</pubDate>
+      
+      
+      
+      
+      
+      
+      <comments>https://blog.kazes.top/posts/0/#disqus_thread</comments>
+      
+    </item>
     
     <item>
       <title>防抖和节流</title>
