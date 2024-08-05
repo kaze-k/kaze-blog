@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
-    <loc>https://blog.kazes.top/posts/0/</loc>
+    <loc>https://blog.kazes.top/posts/19283750/</loc>
     
     <lastmod>2024-08-05</lastmod>
     
@@ -65,7 +65,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kazes.top/posts/aa8f87ba/</loc>
+    <loc>https://blog.kazes.top/posts/d29113f6/</loc>
     
     <lastmod>2023-04-27</lastmod>
     
@@ -74,7 +74,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kazes.top/posts/d29113f6/</loc>
+    <loc>https://blog.kazes.top/posts/aa8f87ba/</loc>
     
     <lastmod>2023-04-27</lastmod>
     
@@ -101,7 +101,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kazes.top/posts/3a68f348/</loc>
+    <loc>https://blog.kazes.top/posts/40f24371/</loc>
     
     <lastmod>2023-04-27</lastmod>
     
@@ -110,7 +110,7 @@
   </url>
   
   <url>
-    <loc>https://blog.kazes.top/posts/40f24371/</loc>
+    <loc>https://blog.kazes.top/posts/3a68f348/</loc>
     
     <lastmod>2023-04-27</lastmod>
     
@@ -169,6 +169,13 @@
   </url>
   
   <url>
+    <loc>https://blog.kazes.top/tags/MySQL/</loc>
+    <lastmod>2024-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
     <loc>https://blog.kazes.top/tags/Arch-Linux/</loc>
     <lastmod>2024-08-05</lastmod>
     <changefreq>weekly</changefreq>
@@ -214,6 +221,13 @@
   
   <url>
     <loc>https://blog.kazes.top/categories/%E5%B7%A5%E5%85%B7/</loc>
+    <lastmod>2024-08-05</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://blog.kazes.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/</loc>
     <lastmod>2024-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>

@@ -6,7 +6,7 @@
   <link href="https://blog.kazes.top/feed/atom.xml" rel="self"/>
   
   <link href="https://blog.kazes.top/"/>
-  <updated>2024-08-05T06:27:55.957Z</updated>
+  <updated>2024-08-05T05:48:02.000Z</updated>
   <id>https://blog.kazes.top/</id>
   
   <author>
@@ -17,15 +17,33 @@
   <generator uri="https://hexo.io/">Hexo</generator>
   
   <entry>
-    <title></title>
-    <link href="https://blog.kazes.top/posts/0/"/>
-    <id>https://blog.kazes.top/posts/0/</id>
-    <published>2024-08-05T06:27:55.957Z</published>
-    <updated>2024-08-05T06:27:55.957Z</updated>
+    <title>MySQL数据库数据类型</title>
+    <link href="https://blog.kazes.top/posts/19283750/"/>
+    <id>https://blog.kazes.top/posts/19283750/</id>
+    <published>2024-08-05T05:48:02.000Z</published>
+    <updated>2024-08-05T05:48:02.000Z</updated>
+    
+    <content type="html"><![CDATA[<h2 id="数值类型">数值类型<a class="header-anchor" href="#数值类型">•</a></h2><ul class="lvl-0"><li class="lvl-2">整数类型<ul class="lvl-2"><li class="lvl-6"><code>TINYINT</code>：1字节<ul class="lvl-4"><li class="lvl-10"><code>TINYINT(1)</code>：(0表示false，1表示true)对应布尔值</li></ul></li><li class="lvl-6"><code>SMALLINT</code>：2字节</li><li class="lvl-6"><code>MEDIUMINT</code>：3字节</li><li class="lvl-6"><code>INT</code>或 <code>INTEGER</code>：4字节</li><li class="lvl-6"><code>BIGINT</code>：8字节</li></ul></li><li class="lvl-3">浮点类型<ul class="lvl-2"><li class="lvl-6"><code>FLOAT</code>：4字节，单精度浮点数</li><li class="lvl-6"><code>DOUBLE</code>：8字节，双精度浮点数</li><li class="lvl-6"><code>DECIMAL</code>：精确浮点数，指定总位数和小数位数，存储为字符串<ul class="lvl-4"><li class="lvl-10"><code>DECIMAL(10, 2)</code>：指总位数10位，小数2位</li></ul></li></ul></li></ul><h2 id="字符串类型">字符串类型<a class="header-anchor" href="#字符串类型">•</a></h2><ul class="lvl-0"><li class="lvl-2"><p>定长字符串</p><ul class="lvl-2"><li class="lvl-6"><code>CHAR(M)</code>：固定长度，最多255个字符</li></ul></li><li class="lvl-2"><p>变长字符串</p><ul class="lvl-2"><li class="lvl-6"><code>VARCHAR(M)</code>：可变长度，最多65535个字符</li></ul></li><li class="lvl-2"><p>文本类型</p><ul class="lvl-2"><li class="lvl-6"><code>TINYTEXT</code>：最多255个字符</li><li class="lvl-6"><code>TEXT</code>：最多65535个字符</li><li class="lvl-6"><code>MEDIUMTEXT</code>：最多 16777215 个字符</li><li class="lvl-6"><code>LONGTEXT</code>：最多 4294967295 个字符</li></ul></li><li class="lvl-2"><p>二进制类型</p><ul class="lvl-2"><li class="lvl-6"><code>BINARY(M)</code>：固定长度二进制数据</li><li class="lvl-6"><code>VARBINARY(M)</code>：可变长度二进制数据</li></ul></li><li class="lvl-2"><p>大对象类型</p><ul class="lvl-2"><li class="lvl-6"><code>TINYBLOB</code>：最多255个字节的二进制数据</li><li class="lvl-6"><code>BLOB</code>：最多 65535 字节的二进制数据</li><li class="lvl-6"><code>MEDIUMBLOB</code>：最多 16777215 字节的二进制数据</li><li class="lvl-6"><code>LONGBLOB</code>：最多 4294967295 字节的二进制数据</li></ul></li></ul><h2 id="日期和时间类型">日期和时间类型<a class="header-anchor" href="#日期和时间类型">•</a></h2><ul class="lvl-0"><li class="lvl-2"><p><code>DATE</code>：日期，格式为<code>YYYY-MM-DD</code></p></li><li class="lvl-2"><p><code>TIME</code>：时间，格式为<code>HH:MM:SS</code></p></li><li class="lvl-2"><p><code>DATETIME</code>：日期和时间，格式为<code>YYYY-MM-DD HH:MM:SS</code></p></li><li class="lvl-2"><p><code>TIMESTAMP</code>：时间戳，格式为<code>YYYY-MM-DD HH:MM:SS</code>，自动更新</p><ul class="lvl-2"><li class="lvl-6"><code>timestamp_column TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP</code>：<code>DEFAULT CURRENT_TIMESTAMP</code>表示当插入新行时，如果没有为 <code>timestamp_column</code> 提供显式值，它会自动设置为当前时间（插入时的时间）。<code>ON UPDATE CURRENT_TIMESTAMP</code>表示每次更新行时，<code>timestamp_column</code> 会自动更新为当前时间（更新时的时间）。</li></ul></li><li class="lvl-2"><p><code>YEAR</code>：年份，格式为<code>YYYY</code></p></li></ul><h2 id="枚举和集合类型">枚举和集合类型<a class="header-anchor" href="#枚举和集合类型">•</a></h2><ul class="lvl-0"><li class="lvl-2"><p><code>ENUM</code>：枚举类型，允许的值列表，单选</p></li><li class="lvl-2"><p><code>SET</code>：集合类型，一个或多个值的结合，允许的值列表，多选</p></li></ul>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h2 id=&quot;数值类型&quot;&gt;数值类型&lt;a class=&quot;header-anchor&quot; href=&quot;#数值类型&quot;&gt;•&lt;/a&gt;&lt;/h2&gt;
+&lt;ul class=&quot;lvl-0&quot;&gt;
+&lt;li class=&quot;lvl-2&quot;&gt;整数类型
+&lt;ul class=&quot;lvl-2&quot;&gt;
+&lt;li</summary>
+        
+      
     
     
     
+    <category term="数据库" scheme="https://blog.kazes.top/categories/%E6%95%B0%E6%8D%AE%E5%BA%93/"/>
     
+    
+    <category term="MySQL" scheme="https://blog.kazes.top/tags/MySQL/"/>
     
   </entry>
   
