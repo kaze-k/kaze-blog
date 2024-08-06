@@ -6,7 +6,7 @@
   <link href="https://blog.kazes.top/feed/atom.xml" rel="self"/>
   
   <link href="https://blog.kazes.top/"/>
-  <updated>2024-08-05T05:48:02.000Z</updated>
+  <updated>2024-08-06T07:24:00.000Z</updated>
   <id>https://blog.kazes.top/</id>
   
   <author>
@@ -15,6 +15,60 @@
   </author>
   
   <generator uri="https://hexo.io/">Hexo</generator>
+  
+  <entry>
+    <title>重绘和回流</title>
+    <link href="https://blog.kazes.top/posts/7f2bc276/"/>
+    <id>https://blog.kazes.top/posts/7f2bc276/</id>
+    <published>2024-08-06T07:24:00.000Z</published>
+    <updated>2024-08-06T07:24:00.000Z</updated>
+    
+    <content type="html"><![CDATA[<h3 id="重绘（REPAINT）">重绘（Repaint）<a class="header-anchor" href="#重绘（REPAINT）">•</a></h3><p>重绘是指当元素的外观发生改变，但不影响其布局时，浏览器会重新绘制该元素。常见的触发重绘的操作包括：</p><ul class="lvl-0"><li class="lvl-2"><p>改变元素的颜色（如 <code>color</code>、<code>background-color</code> 等）。</p></li><li class="lvl-2"><p>改变元素的可见性（如 <code>visibility</code>）。</p></li><li class="lvl-2"><p>改变元素的边框颜色（如 <code>border-color</code>）。</p></li></ul><p>重绘只影响元素的外观，而不涉及元素的位置和大小，所以相对来说开销较小。</p><h3 id="回流（REFLOW）">回流（Reflow）<a class="header-anchor" href="#回流（REFLOW）">•</a></h3><p>回流（又称重排）是指当页面布局或几何属性（如宽高、位置等）发生变化时，浏览器需要重新计算元素的位置和尺寸，并重新渲染页面。常见的触发回流的操作包括：</p><ul class="lvl-0"><li class="lvl-2"><p>添加或删除 DOM 元素。</p></li><li class="lvl-2"><p>改变元素的大小（如 <code>width</code>、<code>height</code>）。</p></li><li class="lvl-2"><p>改变元素的边距（如 <code>margin</code>、<code>padding</code>）。</p></li><li class="lvl-2"><p>改变元素的边框（如 <code>border-width</code>）。</p></li><li class="lvl-2"><p>改变元素的显示状态（如 <code>display</code>）。</p></li><li class="lvl-2"><p>读取某些属性（如 <code>offsetWidth</code>、<code>offsetHeight</code>）。</p></li></ul><p>回流会导致页面的重新布局，是性能开销较大的操作，尤其是在复杂的页面中。</p><h3 id="优化重绘和回流">优化重绘和回流<a class="header-anchor" href="#优化重绘和回流">•</a></h3><p>为了提高页面性能，减少重绘和回流是非常重要的。以下是一些优化建议：</p><ol><li class="lvl-3"><p><strong>批量操作 DOM</strong>：尽量减少对 DOM 的多次操作，可以将多次操作合并。例如，使用 <code>documentFragment</code> 或 <code>innerHTML</code> 一次性添加多个元素。</p></li><li class="lvl-3"><p><strong>使用 CSS 类</strong>：尽量通过改变元素的 CSS 类来应用样式变化，而不是逐个修改元素的样式属性。</p></li><li class="lvl-3"><p><strong>减少布局触发</strong>：避免频繁读取会触发回流的属性（如 <code>offsetHeight</code>），可以将这些值缓存起来。</p></li><li class="lvl-3"><p><strong>脱离文档流操作</strong>：在修改 DOM 前，先将元素从文档流中移除（如 <code>display: none</code>），修改完成后再重新插入。</p></li><li class="lvl-3"><p><strong>避免使用表格布局</strong>：表格的布局和回流开销较大，尽量使用 <code>div</code> + CSS 布局。</p></li><li class="lvl-3"><p><strong>CSS 动画优化</strong>：尽量使用 <code>transform</code> 和 <code>opacity</code> 进行 CSS 动画，因为它们只触发重绘，不会触发回流。</p></li></ol>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;h3 id=&quot;重绘（REPAINT）&quot;&gt;重绘（Repaint）&lt;a class=&quot;header-anchor&quot;</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://blog.kazes.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="浏览器" scheme="https://blog.kazes.top/tags/%E6%B5%8F%E8%A7%88%E5%99%A8/"/>
+    
+  </entry>
+  
+  <entry>
+    <title>事件委托</title>
+    <link href="https://blog.kazes.top/posts/333261a7/"/>
+    <id>https://blog.kazes.top/posts/333261a7/</id>
+    <published>2024-08-06T05:38:26.000Z</published>
+    <updated>2024-08-06T05:38:26.000Z</updated>
+    
+    <content type="html"><![CDATA[<p>事件委托（Event Delegation）是 JavaScript 中的一种处理事件的技巧。通过事件委托，我们可以将事件处理器添加到一个父级元素上，而不是为每一个子元素都添加事件处理器。这种方法不仅简化了代码，而且提升了性能，特别是在有大量子元素的情况下。</p><h2 id="事件委托的原理">事件委托的原理<a class="header-anchor" href="#事件委托的原理">•</a></h2><p>事件委托依赖于事件冒泡机制。事件冒泡是指事件从目标元素向上冒泡到其父元素，直到根元素（通常是 <code>document</code>）。通过在父元素上设置事件处理器，我们可以捕获子元素上的事件。</p><h2 id="事件委托的步骤">事件委托的步骤<a class="header-anchor" href="#事件委托的步骤">•</a></h2><ol><li class="lvl-3"><p><strong>选择父元素</strong>：选择一个包含所有需要监听事件的子元素的公共父元素</p></li><li class="lvl-3"><p><strong>添加事件处理器</strong>：在父元素上添加一个事件处理器</p></li><li class="lvl-3"><p><strong>确定事件目标</strong>：在事件处理器中，通过<code>event.target</code>确定实际触发事件的子元素</p></li><li class="lvl-3"><p><strong>过滤和处理事件</strong>：根据需要过滤和处理特定的子元素事件</p></li></ol><h2 id="示例">示例<a class="header-anchor" href="#示例">•</a></h2><figure class="highlight html"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">id</span>=<span class="string">"buttonList"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>Button 1<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>Button 2<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">button</span>&gt;</span>Button 3<span class="tag">&lt;/<span class="name">button</span>&gt;</span><span class="tag">&lt;/<span class="name">li</span>&gt;</span></span><br><span class="line">    <span class="comment">&lt;!-- 可能还有更多的按钮 --&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">ul</span>&gt;</span></span><br></pre></td></tr></tbody></table></figure><figure class="highlight js"><table><tbody><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 选择父元素</span></span><br><span class="line"><span class="keyword">const</span> buttonList = <span class="variable language_">document</span>.<span class="title function_">getElementById</span>(<span class="string">'buttonList'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 添加事件处理器到父元素</span></span><br><span class="line">buttonList.<span class="title function_">addEventListener</span>(<span class="string">'click'</span>, <span class="keyword">function</span>(<span class="params">event</span>) {</span><br><span class="line">    <span class="comment">// 确定实际触发事件的元素</span></span><br><span class="line">    <span class="keyword">const</span> target = event.<span class="property">target</span>;</span><br><span class="line"></span><br><span class="line">    <span class="comment">// 检查点击的是否是按钮</span></span><br><span class="line">    <span class="keyword">if</span> (target.<span class="property">tagName</span>.<span class="title function_">toLowerCase</span>() === <span class="string">'button'</span>) {</span><br><span class="line">        <span class="comment">// 执行处理逻辑</span></span><br><span class="line">        <span class="title function_">alert</span>(<span class="string">`You clicked <span class="subst">${target.textContent}</span>`</span>);</span><br><span class="line">    }</span><br><span class="line">})</span><br></pre></td></tr></tbody></table></figure><h2 id="适用场景">适用场景<a class="header-anchor" href="#适用场景">•</a></h2><ul class="lvl-0"><li class="lvl-2"><p>动态生成的内容</p></li><li class="lvl-2"><p>列表项</p></li><li class="lvl-2"><p>表格中的单元格</p></li></ul>]]></content>
+    
+    
+      
+      
+        
+        
+    <summary type="html">&lt;p&gt;事件委托（Event Delegation）是 JavaScript</summary>
+        
+      
+    
+    
+    
+    <category term="前端" scheme="https://blog.kazes.top/categories/%E5%89%8D%E7%AB%AF/"/>
+    
+    
+    <category term="JavaScript" scheme="https://blog.kazes.top/tags/JavaScript/"/>
+    
+  </entry>
   
   <entry>
     <title>MySQL数据库数据类型</title>
@@ -272,9 +326,9 @@
     <category term="系统" scheme="https://blog.kazes.top/categories/%E7%B3%BB%E7%BB%9F/"/>
     
     
-    <category term="Arch Linux" scheme="https://blog.kazes.top/tags/Arch-Linux/"/>
-    
     <category term="Linux" scheme="https://blog.kazes.top/tags/Linux/"/>
+    
+    <category term="Arch Linux" scheme="https://blog.kazes.top/tags/Arch-Linux/"/>
     
   </entry>
   
@@ -303,9 +357,9 @@
     <category term="系统" scheme="https://blog.kazes.top/categories/%E7%B3%BB%E7%BB%9F/"/>
     
     
-    <category term="Arch Linux" scheme="https://blog.kazes.top/tags/Arch-Linux/"/>
-    
     <category term="Linux" scheme="https://blog.kazes.top/tags/Linux/"/>
+    
+    <category term="Arch Linux" scheme="https://blog.kazes.top/tags/Arch-Linux/"/>
     
     <category term="Windows" scheme="https://blog.kazes.top/tags/Windows/"/>
     
@@ -428,9 +482,9 @@
     <category term="系统" scheme="https://blog.kazes.top/categories/%E7%B3%BB%E7%BB%9F/"/>
     
     
-    <category term="Arch Linux" scheme="https://blog.kazes.top/tags/Arch-Linux/"/>
-    
     <category term="Linux" scheme="https://blog.kazes.top/tags/Linux/"/>
+    
+    <category term="Arch Linux" scheme="https://blog.kazes.top/tags/Arch-Linux/"/>
     
   </entry>
   
